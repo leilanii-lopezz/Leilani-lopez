@@ -23,3 +23,7 @@ Corporate Partnerships & Sponsorships • Sports Business • Business Developme
 ---
 
 *Drafted with help from ChatGPT (OpenAI, 2026); reviewed and edited by me.*
+
+## Engagements
+
+- [Professional Resume](RESUME.md)

@@ -10,7 +10,7 @@ hypothesis: "I expect the forward hedge to provide the most certainty in USD pro
 
 ## Exposure
 
-The company is a U.S. solar-inverter maker that expects to receive €5.4 million from an Italian solar developer in 273 days, or about nine months. Since the payment is in euros, the amount the company eventually receives in U.S. dollars will depend on the EUR/USD exchange rate when the payment is received. The main risk is that the euro weakens during those nine months. If that happens, the €5.4 million will convert into fewer U.S. dollars than expected, which could create a meaningful difference in the company’s cash flow.
+The company is a U.S. solar-inverter maker that expects to receive €5.4 million from an Italian solar developer in 273 days, or about nine months. Since the payment is in euros, the amount the company eventually receives in U.S. dollars will depend on the EUR/USD exchange rate when the payment is received. The main risk is that the euro weakens during those nine months. If that happens, the €5.4 million will convert into fewer U.S. dollars than expected, which could create a meaningful difference in the company’s cash flow. For example, if EUR/USD were 1.10, a 5% drop before payment would reduce the dollar value of the €5.4 million receivable by about $297,000.
 
 ## Hedge Alternatives
 
@@ -32,3 +32,8 @@ For this brief, I am assuming the company will receive the full €5.4 million i
 
 ## Hypothesis
 
+I expect the forward hedge to provide the most certainty in U.S. dollar proceeds because it locks in the EUR/USD exchange rate before the €5.4 million payment is received. However, I would reconsider this expectation if the later analysis shows that another hedge provides similar protection at a lower overall cost or gives the company a better outcome while still limiting the downside risk.
+
+## Next Steps
+
+The next phases will test this hypothesis before a final recommendation is made. Phase 2 will lay out the model specification, including how the different hedging strategies will be calculated and compared. Phase 3 will use AI to help build the model and then audit the results for errors. Phase 4 will add the current market data needed for the analysis. Finally, Phase 5 will analyze and validate the results before making the final recommendation.

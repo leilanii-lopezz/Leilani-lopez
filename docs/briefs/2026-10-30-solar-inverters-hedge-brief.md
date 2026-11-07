@@ -17,6 +17,7 @@ The company is a U.S. solar-inverter maker that expects to receive €5.4 millio
 ### Forward/Futures
 
 A forward or futures hedge would allow the company to lock in an exchange rate for the €5.4 million receivable before it is received. This would give the company certainty about how many U.S. dollars it will receive and protect against the euro weakening. The downside is that if the euro strengthens instead, the company would not benefit from that favorable exchange-rate movement.
+At the quoted 273-day forward rate of 1.1756 USD/EUR, the company would lock in $6,348,240 for its €5,400,000 receivable.
 
 ### Money-Market Hedge
 
@@ -25,6 +26,7 @@ A money-market hedge would involve borrowing euros now, converting them into U.S
 ### Put Option
 
 A put option would give the company the right to sell the euros at a set exchange rate, which would protect the company if the euro weakens. Unlike the other two choices, the company could still benefit if the euro strengthens before the payment is received. The tradeoff is that the company would have to pay an upfront premium for that flexibility, even if the option ends up not being used.
+At the quoted put option premium of $0.0224 per euro, protecting the full €5,400,000 receivable would require an upfront premium payment of $120,960.
 
 ## Assumptions
 

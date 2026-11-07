@@ -27,3 +27,21 @@ Corporate Partnerships & Sponsorships • Sports Business • Business Developme
 ## Engagements
 
 - [Professional Resume](RESUME.md)
+
+## FX Transaction Hedging Project
+
+**Course:** FIN 321 - International Finance and Securities
+
+**Scenario 37: Solar Inverters**
+
+This project analyzes how a U.S. solar-inverter manufacturer can manage foreign exchange risk on a EUR 5,400,000 receivable due in 273 days. The analysis compares an unhedged position, a forward contract, a money-market hedge, and an options hedge to evaluate potential USD proceeds, costs, and risks.
+
+### Project Progress
+- Phase 0: Portfolio Repository - Complete
+- Stage 1: Executive Memo - Complete
+- Stage 2: Model Specification - Complete
+
+### Project Files
+- [FX Hedging Model Specification](capabilities/fx-hedging/spec.md)
+- [FX Hedging Project Overview](capabilities/fx-hedging/README.md)
+  

@@ -90,7 +90,29 @@ Interest rates and spot/strike values are illustrative placeholders, not verifie
 These derived values will be calculated using formulas in the Stage 3 workbook, not manually entered as fixed outputs.
 
 ---
+2.2 Workbook Tab Architecture
 
+The Excel workbook will contain the following worksheets:
+
+Cover: Identifies Scenario 37 (Solar Inverters), the author, date, purpose of the model, and data sources.
+
+Legend: Explains the workbook's color conventions: yellow for inputs, blue for assumptions, green for formulas, and gray for outputs.
+
+Inputs: Contains the ten named input ranges, their values, units, and sources.
+
+Forward: Calculates the USD proceeds from the forward hedge using the contracted forward rate.
+
+Money Market: Calculates the money market hedge in three steps: discount the EUR receivable, convert to USD at the spot rate, and grow the USD proceeds to settlement.
+
+Put Option: Calculates the USD proceeds from purchasing a EUR put option, including the premium cost.
+
+Call Option: Calculates the USD proceeds and payoff from a EUR call option for comparison.
+
+Sensitivity: Compares hedge outcomes across exchange-rate movements of ±5% in 1% increments and includes a chart.
+
+Checks: Displays the model's validation calculations, including forward parity and the numerical checks defined in Section 7.
+
+Notes: Documents assumptions, data limitations, and any relevant modeling conventions.
 ## 3. Assumptions & Constraints
 
 - **Quote convention:** All exchange rates are expressed as USD per EUR. A higher EUR/USD rate means the euro appreciates and increases the USD value of the receivable.
@@ -116,8 +138,8 @@ Described in named-range pseudocode so the logic is portable across Excel, Pytho
 
 1. `DF_USD` = `1 + R_USD × T_DAYS / BASIS` *(accumulation / growth factor, not a fractional discount factor)*
 2. `DF_FC` = `1 + R_FC × T_DAYS / BASIS`
-3. `FV_PREM_PUT` = `−PREM_PUT × FC_AMT × DF_USD`
-4. `FV_PREM_CALL` = `−PREM_CALL × FC_AMT × DF_USD`
+3. `FV_PREM_PUT` = `PREM_PUT × FC_AMT × (1 + R_USD × T_DAYS / 360)`
+4. `FV_PREM_CALL` = `PREM_CALL × FC_AMT × (1 + R_USD × T_DAYS / 360)`
 
 ### Step 2 — Forward hedge (certainty benchmark)
 
@@ -131,7 +153,7 @@ Described in named-range pseudocode so the logic is portable across Excel, Pytho
 3. Invest the USD to maturity: `USD_MM` = `(FC_AMT / DF_FC) × S0_in × DF_USD`.
 4. At maturity, the FC receivable repays the foreign borrowing exactly — so the USD deposit is the locked-in proceed.
 
-> **Parity check:** `USD_MM ≈ USD_FWD` within rounding. A persistent gap indicates a violation of covered interest-rate parity in the quoted inputs.
+Parity check: Calculate the implied forward rate as F_IMPLIED = S0_in × DF_USD / DF_FC. Compare F_IMPLIED with the assigned forward rate F0_in, and calculate the USD proceeds difference as USD_MM - USD_FWD. Because the interest rates are illustrative and may not be consistent with the assigned forward quote, a difference is expected. Report the numerical difference and whether it falls within the tolerance defined in Section 7. Do not force the two hedge proceeds to match.
 
 ### Step 4 — Option hedge (floor with upside)
 
@@ -140,7 +162,6 @@ Put-and-hold strategy on the receivable:
 - Pay `PREM_PUT × FC_AMT` USD today for a put on FC with strike `K_PUT`.
 - At settlement, for each `S_T` on the grid:
 - `USD_PUT(S_T)` = `FC_AMT × MAX(S_T, K_PUT) - FV_PREM_PUT`
-  - Equivalently: `MAX(S_T, K_PUT) × FC_AMT + FV_PREM_PUT`
 
 ### Step 5 — Sensitivity table (rows of the grid)
 
@@ -278,10 +299,27 @@ This review identifies the strengths and potential weaknesses of the proposed mo
 | Base-case output values (§5.1) | Regression checkpoints for the refined model |
 
 ---
+Validation Checks & Numerical Tolerances
+
+The Excel workbook will include a Checks worksheet to verify the accuracy and consistency of the hedge calculations.
+
+Forward hedge check: Verify that USD_FWD = FC_AMT × F0_in. The difference between the calculated and expected proceeds must be within $0.01.
+
+Money-market hedge check: Verify that USD_MM = (FC_AMT / DF_FC) × S0_in × DF_USD. The difference between the workbook result and an independently calculated result must be within $0.01.
+
+Forward parity comparison: Calculate F_IMPLIED = S0_in × DF_USD / DF_FC and compare it with F0_in. Report the absolute exchange-rate difference and the corresponding USD proceeds difference (USD_MM - USD_FWD). Use a tolerance of 0.0001 USD/EUR to identify a material difference between the two forward rates. A difference outside this tolerance must be flagged and explained, but does not automatically mean the workbook calculations are incorrect.
+
+Put-option floor check: Verify that the gross put-option proceeds never fall below FC_AMT × K_PUT. Net proceeds must reflect the subtraction of the positive future-value premium cost exactly once.
+
+Sensitivity grid check: Confirm that the sensitivity analysis contains 11 exchange-rate scenarios, from 95% to 105% of S0_in, in 1% increments.
+
+Formula consistency check: Confirm that all hedge calculations reference the named inputs, use consistent units, and follow the positive-cost convention for option premiums.
+
+Each check will display a PASS or FAIL result, with any exceptions documented in the audit report.
 
 ## Appendix A — Change Log
 
 | Version | Date | Author | Change |
 |---------|------|--------|--------|
 | 0.1 | 2026-11-06 | Leilani Lopez | Initial Stage 2 FX hedging model specification for Scenario 37 (solar-inverters) |
-
+| 0.2 | 2026-11-18 | Leilani Lopez | Revised Stage 2 specification based on November 7 instructor feedback: added workbook tab architecture, standardized option premium sign conventions, clarified forward and money-market parity comparison, and added numerical validation checks and tolerances. |

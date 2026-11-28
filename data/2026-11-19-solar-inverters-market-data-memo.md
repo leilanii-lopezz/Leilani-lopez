@@ -5,10 +5,9 @@ Scenario: 37 — Solar Inverters
 Market Data Date: November 19, 2026
 Exposure: EUR 5,400,000 receivable in 273 days
 Currency Convention: USD per EUR
+Revision: November 27, 2026 — Stage 5 preparation
 
 1. Market Data Inputs
-
-The following inputs were collected or retained for the FX hedging model.
 
 Named Range
 
@@ -16,87 +15,71 @@ Value
 
 Source
 
-Date / Status
-
 FC_AMT
 
 EUR 5,400,000
 
-Assigned Scenario 37
-
-Contract input
+Assigned scenario
 
 S0_in
 
-1.0992 USD/EUR
+1.0992
 
-European Central Bank reference exchange rates
-
-Nov. 19, 2026
+ECB reference rate, Nov. 19
 
 F0_in
 
-1.1756 USD/EUR
+1.1756
 
-Assigned scenario forward quote
-
-Retained
+Assigned forward quote
 
 R_USD
 
 4.60%
 
-Federal Reserve H.15, 1-year Treasury constant maturity
-
-Nov. 17, 2026
+Federal Reserve H.15, Nov. 17
 
 R_FC
 
-2.65%
+3.193%
 
-European Central Bank, main refinancing operations
-
-Sept. 16, 2026 effective date
+Interpolated nine-month Euribor proxy
 
 K_PUT
 
-1.0992 USD/EUR
+1.0992
 
-Set at the sourced spot rate
-
-Nov. 19, 2026
+Sourced spot rate
 
 K_CALL
 
-1.0992 USD/EUR
+1.0992
 
-Set at the sourced spot rate
-
-Nov. 19, 2026
+Sourced spot rate
 
 PREM_PUT
 
-0.0224 USD/EUR
+0.0224
 
-Assigned scenario premium
-
-Retained
+Assigned scenario
 
 PREM_CALL
 
-0.0376 USD/EUR
+0.0376
 
-Assigned scenario premium
-
-Retained
+Assigned scenario
 
 T_DAYS
 
 273
 
-Assigned Scenario 37
+Assigned scenario
 
-Contract input
+BASIS
+
+360
+
+Model convention
 
 Source links:
 
@@ -104,35 +87,27 @@ ECB exchange rates: https://www.ecb.europa.eu/stats/policy_and_exchange_rates/eu
 
 Federal Reserve H.15: https://www.federalreserve.gov/releases/h15/
 
-ECB key interest rates: https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html
+Bank of Finland: https://www.suomenpankki.fi/en/
 
-Retrieval: Sources were accessed on November 19, 2026, during the morning in the user's local time zone. Exact retrieval timestamps were not recorded.
+Original market data retrieval occurred on November 19, 2026. Exact retrieval timestamps were not recorded.
 
 2. Interest Rate Selection
 
-The USD rate of 4.60% represents the most recently observed 1-year Treasury constant maturity yield from the Federal Reserve H.15 table.
+The USD rate of 4.60% represents the one-year Treasury constant maturity yield.
 
-The EUR rate of 2.65% represents the ECB main refinancing operations policy rate. It is used as a publicly documented EUR interest-rate proxy, although it is not a directly comparable 1-year market yield.
+Following Stage 4 feedback, the original ECB policy rate of 2.65% was replaced with an estimated nine-month Euribor proxy of 3.193%, based on interpolation between six-month and twelve-month rates of 3.043% and 3.343%, respectively. The underlying historical observations require final source confirmation.
 
-The two rates therefore do not represent perfectly matched financing instruments. The model uses them as transparent proxies and identifies this limitation.
+The revised maturity proxy better reflects the 273-day exposure, although the USD and EUR rates remain imperfectly matched financing instruments.
 
 3. Forward Rate and Covered Interest Parity
 
-The assigned forward quote remains unchanged at 1.1756 USD/EUR.
-
-The implied forward rate is calculated as:
+The assigned forward quote remains unchanged.
 
 F_IMPLIED = S0 × (1 + R_USD × 273 / 360) / (1 + R_FC × 273 / 360)
 
-Using the selected market inputs:
-
-F_IMPLIED = 1.115134 USD/EUR
-
-Comparison:
-
 Metric
 
-Value
+Revised value
 
 Assigned forward rate
 
@@ -140,11 +115,11 @@ Assigned forward rate
 
 CIP-implied forward rate
 
-1.115134
+1.110651
 
 Implied minus assigned rate
 
--0.060466 USD/EUR
+-0.064949
 
 Assigned forward proceeds
 
@@ -152,50 +127,42 @@ $6,348,240.00
 
 Money-market proceeds
 
-$6,021,724.73
+$5,997,514.98
 
 Money-market minus forward proceeds
 
--$326,515.27
+-$350,725.02
 
-The difference exceeds the model's parity tolerance. It is retained as a documented discrepancy rather than changing the assigned forward quote.
+The revised EUR rate reduces money-market proceeds by $24,209.75 relative to the original Stage 4 results.
 
-Possible contributing factors include the illustrative nature of the assigned quote and the use of non-matched interest-rate proxies.
+The parity difference exceeds the model tolerance. It is retained and disclosed rather than eliminated by modifying assigned scenario inputs.
 
 4. Option Assumptions
 
-Both option strikes are set equal to the sourced spot rate of 1.0992 USD/EUR.
+Both option strikes equal the sourced spot rate of 1.0992 USD/EUR.
 
-The assigned put and call premiums remain unchanged. They are scenario-provided inputs rather than independently verified executable option prices.
+Assigned option premiums remain unchanged. They are illustrative scenario inputs rather than independently verified executable prices.
 
-The model carries upfront option premium costs forward to settlement using the USD interest rate.
+Upfront premiums are carried forward to settlement using the USD interest rate.
 
 5. Workbook Population and Validation
 
-The Stage 3 workbook will be updated through its named input cells using the values documented above.
+The workbook has been populated with the revised market inputs. Named-range references have been restored in the core money-market, option, input and sensitivity formulas.
 
-The following validation activities remain to be completed:
+The corrected workbook contains 11 sensitivity scenarios. All arithmetic, put-floor, grid-count, grid-endpoint and premium-sign checks pass. The forward-parity check retains its intentional flag.
 
-Recalculate all hedge proceeds using the sourced inputs.
-
-Confirm that the sensitivity table and chart update around the new spot rate.
-
-Review the Checks worksheet and document the forward-parity warning.
-
-Compare the workbook outputs with the professor's FX Hedging Lab.
-
-Record any formula corrections or differences identified during validation.
+The original Stage 4 FX Hedging Lab comparison is historical evidence. The revised workbook requires a new independent comparison during Stage 5.
 
 6. Data Limitations
 
-The ECB reference spot rate is an indicative reference rate, not a guaranteed executable transaction quote.
+The ECB reference exchange rate is indicative rather than executable.
 
-The USD Treasury yield and ECB policy rate are proxies rather than matched 273-day borrowing and investment rates.
+The USD Treasury yield and interpolated Euribor rate are financing proxies.
 
-The assigned forward quote and option premiums have been retained in accordance with the scenario requirements.
+The assigned forward quote and option premiums are retained as scenario inputs.
 
-These limitations should be considered when interpreting the hedging recommendation in Stage 5.
+The observed parity gap should not be interpreted as a guaranteed executable arbitrage opportunity.
 
 7. Status
 
-Market inputs have been identified and documented. Workbook population, recalculation, and FX Hedging Lab cross-check are pending.
+Workbook population and recalculation are complete. Stage 5 independent AI execution, reconciliation and decision analysis remain to be completed.

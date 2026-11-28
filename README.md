@@ -45,3 +45,28 @@ This project analyzes how a U.S. solar-inverter manufacturer can manage foreign 
 - [FX Hedging Model Specification](capabilities/fx-hedging/spec.md)
 - [FX Hedging Project Overview](capabilities/fx-hedging/README.md)
   
+## Stage 5 — Validation and Final Hedge Decision
+
+**Scenario 37: Solar Inverters**
+
+The final FX hedging model evaluates a EUR 5,400,000 receivable with a 273-day settlement horizon.
+
+### Final Deliverables
+
+- [Final Excel Model](capabilities/fx-hedging/model.xlsx)
+- [Revised Market Data Memo](data/2026-11-19-solar-inverters-market-data-memo.md)
+- [Independent AI Execution](analysis/2026-11-27-solar-inverters-ai-execution.md)
+- [Validation Analysis and Retrospective](analysis/2026-11-27-solar-inverters-validation-analysis.md)
+- [CFO Hedge Decision Memo](docs/decisions/2026-11-27-solar-inverters-hedge-decision-memo.md)
+
+### Final Recommendation
+
+Hedge 100% of the EUR receivable using the assigned forward contract, securing $6,348,240 in USD proceeds, subject to confirmation of executable market pricing.
+
+The forward outperforms all alternative receivable strategies across the eleven modeled sensitivity scenarios.
+
+The covered interest parity discrepancy and outstanding market-data verification requirements are documented in the validation analysis and decision memo.
+
+### AI Disclosure
+
+ChatGPT assisted with model development, formula revisions, independent execution, validation and documentation. AI usage is documented in the project prompt log.

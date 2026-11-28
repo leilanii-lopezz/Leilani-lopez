@@ -37,13 +37,20 @@ Corporate Partnerships & Sponsorships • Sports Business • Business Developme
 This project analyzes how a U.S. solar-inverter manufacturer can manage foreign exchange risk on a EUR 5,400,000 receivable due in 273 days. The analysis compares an unhedged position, a forward contract, a money-market hedge, and an options hedge to evaluate potential USD proceeds, costs, and risks.
 
 ### Project Progress
-- Phase 0: Portfolio Repository - Complete
-- Stage 1: Executive Memo - Complete
-- Stage 2: Model Specification - Complete
+
+- Phase 0: Portfolio Repository — Complete
+- Stage 1: Executive Memo — Complete
+- Stage 2: Model Specification — Complete
+- Stage 3: Model Build and Audit — Complete
+- Stage 4: Market Data and Model Refinement — Complete
+- Stage 5: Independent Validation and CFO Decision — Complete
 
 ### Project Files
+
 - [FX Hedging Model Specification](capabilities/fx-hedging/spec.md)
 - [FX Hedging Project Overview](capabilities/fx-hedging/README.md)
+- [Stage 3 Model Audit](analysis/2026-11-19-solar-inverters-build-audit-analysis.md)
+- [AI Prompt Log](prompt-log.md)
   
 ## Stage 5 — Validation and Final Hedge Decision
 

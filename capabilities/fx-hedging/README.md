@@ -36,3 +36,27 @@ The goal is to compare potential USD proceeds, costs, and risks to help determin
 
 ChatGPT (GPT-6) assisted with drafting, organizing, and reviewing the technical specification and project documentation. I reviewed the content and checked it against my assigned scenario.
   
+## Final Model and Validation — Stage 5
+
+### Final Deliverables
+
+- [Technical Specification](spec.md)
+- [Final Excel Model](model.xlsx)
+- [Revised Market Data Memo](../../data/2026-11-19-solar-inverters-market-data-memo.md)
+- [Independent AI Execution](../../analysis/2026-11-27-solar-inverters-ai-execution.md)
+- [Validation Analysis and Retrospective](../../analysis/2026-11-27-solar-inverters-validation-analysis.md)
+- [CFO Decision Memo](../../docs/decisions/2026-11-27-solar-inverters-hedge-decision-memo.md)
+
+### Model Validation
+
+The final model incorporates revised market-data assumptions, restored named-range formulas, independent AI validation, personal calculator verification, and a documented covered interest parity exception.
+
+The forward, money-market and put-option calculations were independently verified using a calculator outside Excel.
+
+### Final Recommendation
+
+Hedge 100% of the EUR 5,400,000 receivable using the assigned 273-day forward contract.
+
+The forward secures $6,348,240 in USD proceeds and outperforms all alternative receivable strategies across the eleven modeled sensitivity scenarios.
+
+The recommendation remains conditional on confirmation of executable market pricing and underlying market-data assumptions.

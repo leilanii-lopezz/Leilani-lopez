@@ -204,16 +204,26 @@ For a payable of `FC_AMT` to be settled in FC at maturity, the model mirrors Ste
 
 ### 5.1 Computed Base-Case Values
 
-The base case uses an illustrative settlement spot rate of 1.1000 USD/EUR. These results are preliminary and will be recalculated and validated in Stage 3. The model compares USD proceeds for the EUR 5,400,000 receivable under each hedging strategy.
+**Post-validation revision — November 27, 2026 (Stage 5)**
+
+The final base case uses a settlement spot rate of 1.0992 USD/EUR and the revised Stage 4 market-data assumptions. These results supersede the preliminary Stage 2 estimates.
 
 | Strategy | Base-Case USD Proceeds | Hedge Profit vs. No Hedge |
 |---|---:|---:|
-| No hedge | $5,940,000 | $0 |
-| Forward | $6,348,240 | +$408,240 |
-| Money market | $6,023,900 (approx.) | +$83,900 (approx.) |
-| Put option | $5,813,919 (approx., after financed premium) | -$126,081 (approx.) |
+| No hedge | $5,935,680.00 | $0.00 |
+| Forward | $6,348,240.00 | +$412,560.00 |
+| Money market | $5,997,514.98 | +$61,834.98 |
+| Put option | $5,810,500.51 | -$125,179.49 |
 
-The forward rate is taken from the assigned scenario. Money-market proceeds use the illustrative USD and EUR interest rates from Section 2 and do not match the quoted forward rate under covered interest-rate parity. This discrepancy must be investigated and documented during validation rather than treated as a formula error. All base-case values will be updated when verified market inputs become available in Stage 4.
+The hypothetical EUR call-option payable has a maximum net USD outlay of $6,145,802.71. It is excluded from the receivable strategy rankings.
+
+The assigned forward rate remains 1.1756 USD/EUR. The revised covered-interest-parity implied forward rate is approximately 1.110651 USD/EUR, resulting in a money-market minus forward proceeds difference of -$350,725.02.
+
+This discrepancy is documented as a parity exception rather than an arithmetic error. Historical Euribor observations and executable market pricing require final confirmation.
+
+This section was updated after the independent Stage 5 AI execution. The original Stage 2 specification remains available through GitHub commit history.
+
+See the [Stage 5 Validation Analysis](../../analysis/2026-11-27-solar-inverters-validation-analysis.md) for detailed calculations and reconciliation.
 
 ---
 

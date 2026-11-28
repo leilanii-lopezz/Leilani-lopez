@@ -190,3 +190,15 @@ The workbook and independent AI execution agree on the principal hedge outcomes 
 The forward provides the highest proceeds in all eleven modeled sensitivity scenarios. It exceeds the money-market hedge by $350,725.02 and the net put-option floor by $537,739.49.
 
 The recommendation remains conditional on confirming the executability of the assigned forward quote and the underlying market-data assumptions.
+
+## Final Hand-Verification Reconciliation
+
+| Outcome | Named-Range Calculation | Calculated USD | Workbook USD | Difference |
+|---|---|---:|---:|---:|
+| Forward | FC_AMT × F0_in | 6,348,240.00 | 6,348,240.00 | 0.00 |
+| Money market | (FC_AMT / DF_FC) × S0_in × DF_USD | 5,997,514.98 | 5,997,514.98 | 0.00 |
+| Put floor | FC_AMT × K_PUT - FV_PREM_PUT | 5,810,500.51 | 5,810,500.51 | 0.00 |
+
+Detailed intermediate calculations are provided in Section 3.
+
+The missing call-option sensitivity outputs in the original AI response are classified as an incomplete AI deliverable and a specification ambiguity, rather than a demonstrated workbook arithmetic error. The original response remains unchanged, and supplemental calculations are provided in Section 3D.

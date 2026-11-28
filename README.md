@@ -47,6 +47,7 @@ This project analyzes how a U.S. solar-inverter manufacturer can manage foreign 
 
 ### Project Files
 
+- [Stage 1 Executive Memo](docs/briefs/2026-10-30-solar-inverters-hedge-brief.md)
 - [FX Hedging Model Specification](capabilities/fx-hedging/spec.md)
 - [FX Hedging Project Overview](capabilities/fx-hedging/README.md)
 - [Stage 3 Model Audit](analysis/2026-11-19-solar-inverters-build-audit-analysis.md)
